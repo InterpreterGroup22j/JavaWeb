@@ -64,7 +64,7 @@
   }
 
   .list {
-    padding: 20px 100px;
+    padding: 84px 100px 0px 100px;
   }
 
   .gym-item-card {

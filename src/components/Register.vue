@@ -39,7 +39,7 @@
     },
     methods: {
       register() {
-        this.axios.post('http://h6be2u.natappfree.cc/user/insertUser', {
+        this.axios.post('http://ygnfje.natappfree.cc/user/insertUser', {
             user_name: this.formItem.username,
             user_account: this.formItem.account,
             user_password: this.formItem.password,
@@ -58,7 +58,7 @@
 .registerForm{
     width:400px;
     margin: 0,auto;
-    padding:50px;
+    padding:84px 40px 0px 40px;
     border: 1px solid black;
 }
 </style>

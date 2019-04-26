@@ -5,7 +5,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         login: false,
-        plan:false
+        plan: false,
+        id:''
     },
     getters: {
         getLogin(state) {
@@ -13,22 +14,27 @@ export default new Vuex.Store({
         },
         getPlan(state) {
             return state.plan;
+        },
+        getId(state) {
+            return state.id;
         }
     },
     mutations: {
-        login(state) {
+        login(state,id) {
             state.login = true;
+            state.id = id;
         },
         logout(state) {
             state.login = false;
+            state.id = '';
         },
         plan(state) {
             state.plan = true;
         }
     },
     actions: {
-        login(context) {
-            context.commit('login');
+        login(context,id) {
+            context.commit('login',id);
         },
         logout(context) {
             context.commit('logout');
