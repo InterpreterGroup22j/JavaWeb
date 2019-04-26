@@ -36,7 +36,9 @@
         </iCol>
       </Row>
     </section>
-
+    <section class="home-section">
+      <div>2</div>
+    </section>
   </div>
 </template>
 <script>
@@ -71,18 +73,14 @@
 
 </script>
 <style>
-.home-section{
+.home-section{ 
+  padding:84px 40px 0px 40px; 
   height: 100vh;
-  width: 100vw;
 }
   .carouselItem {
     background: #CCC;
     height: 500px;
   }
-
-  /* #home-container {
-    margin: 20px;
-  } */
 
   #card_container {
     margin-top: 20px;

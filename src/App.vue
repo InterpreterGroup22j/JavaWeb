@@ -27,14 +27,12 @@
     width: 100vw;
     background-color: #333;
     box-shadow: 0 3px 10px 2px #000;
-    z-index: 1;
+    z-index: 99;
     position: fixed;
   }
 
   .content {
-    padding-top: 64px;
     background-color: #333;
-    width: 100vw;
   }
 
   /* #app {
