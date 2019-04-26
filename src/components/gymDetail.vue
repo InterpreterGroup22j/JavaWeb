@@ -7,7 +7,7 @@
     </Card>
     <Card class="gym-detail-card">
       <p class='detail_title'>
-        <Icon type="android-arrow-dropright"></Icon>商家详情
+        商家详情
       </p>
       <ul>
         <li v-for="detail in details">
@@ -27,9 +27,9 @@
       </p>
       <Modal v-model="modal" title="填写评论" @on-ok="submit" @on-cancel="cancel">
         <p>
-          <Rate allow-half show-text></Rate>
+          <Rate allow-half show-text v-model="user_rate"></Rate>
+          <Input type="textarea" placeholder="请输入评论" v-model="user_comment"></Input>
         </p>
-        <p>comment</p>
       </Modal>
       <ul>
         <li v-for="comment in comments">
@@ -54,7 +54,8 @@
     data() {
       return {
         modal: false,
-        user_modal: 0,
+        user_rate: 0,
+        user_comment:null,
         startTime: '09:30',
         endTime: '21:30',
         details: [
@@ -96,9 +97,25 @@
     methods: {
       submit() {
         this.$Message.info('提交评论');
+        this.axios.post('', {
+            rate:this.user_rate,
+            Comment:this.user_comment,
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
       },
       cancel() {
         this.$Message.info('取消本次评论');
+        this.user_rate=0;
+      }
+    },
+    mounted: {
+      load(){
+        this.axios.post('', {
+            
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
       }
     }
   }
