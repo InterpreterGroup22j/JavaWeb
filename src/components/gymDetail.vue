@@ -97,6 +97,12 @@
     methods: {
       submit() {
         this.$Message.info('提交评论');
+        this.axios.post('', {
+            rate:this.user_rate,
+            Comment:this.user_comment,
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
       },
       cancel() {
         this.$Message.info('取消本次评论');
@@ -105,7 +111,11 @@
     },
     mounted: {
       load(){
-
+        this.axios.post('', {
+            
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
       }
     }
   }
