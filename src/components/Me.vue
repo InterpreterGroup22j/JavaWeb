@@ -1,61 +1,68 @@
 <template>
-    <div id="me">
-        账号&#160;<Input v-model="value1" placeholder="请输入账号" style="width: 300px" />
-        <br>
-        密码&#160;<Input v-model="value2" placeholder="请输入密码" type="password" style="width: 300px" />
-        <br>
-        姓名&#160;<Input v-model="value3" placeholder="请输入姓名" style="width: 300px" />
-        <br>
-        身高<Select v-model="model1" style="width:300px">
-            <Option v-for="item in hightList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-        </Select>
-        <br>
-        体重&#160;<Input v-model="value4" placeholder="请输入体重" style="width: 300px" />
-        <br>
-        腰围&#160;<Input v-model="value5" placeholder="请输入腰围" style="width: 300px" />
-        <br>
-        <i-button type="primary">注册</i-button>
-    </div>
+  <Form class="MeForm" :label-width="80">
+    <FormItem label="Id">
+      <Input v-model="formItem.id" :disabled="true" placeholder="id" />
+    </FormItem>
+    <FormItem label="Username">
+      <Input v-model="formItem.username" :disabled="true" placeholder="username" />
+      <icon type="md-create"></icon>
+    </FormItem>
+    <FormItem label="Account">
+      <Input v-model="formItem.account" :disabled="true" placeholder="account" />
+    </FormItem>
+    <FormItem label="Password">
+      <Input v-model="formItem.password" :disabled="true" placeholder="password" />
+    </FormItem>
+    <FormItem label="Sex">
+      <Input v-model="formItem.sex" :disabled="true" placeholder="sex" />
+    </FormItem>
+    <FormItem label="Height">
+      <Input v-model="formItem.height" :disabled="true" placeholder="height" />
+    </FormItem>
+    <FormItem label="Weight">
+      <Input v-model="formItem.weight" :disabled="true" placeholder="weight" />
+    </FormItem>
+  </Form>
 </template>
 
 <script>
-import Vue from 'vue'
-export default {
+  export default {
     data() {
-        return {
-                cityList: [
-                    {
-                        value: '150',
-                        label: '150'
-                    },
-                    {
-                        value: '151',
-                        label: '151'
-                    },
-                    {
-                        value: '152',
-                        label: '152'
-                    },
-                    {
-                        value: '153',
-                        label: '153'
-                    },
-                    {
-                        value: '154',
-                        label: '154'
-                    },
-                    {
-                        value: '155',
-                        label: '155'
-                    }
-                ],
-                model1: '',
-                value1: '',
-                value2: '',
-                value3: '',
-                value4: '',
-                value5: ''              
+      return {
+        formItem: {
+          id: '',
+          username: '',
+          account: '',
+          password: '',
+          sex:'',
+          height:'',
+          weight:''
         }
+      }
+    },
+    mounted:{
+    info(){
+      this.axios.post('http://h6be2u.natappfree.cc/user/qryUserInfo', {
+            id: this.formItem.id,
+            user_name: this.formItem.username,
+            user_account: this.formItem.account,
+            user_password: this.formItem.password,
+            user_sex:this.formItem.sex,
+            user_height:this.formItem.height,
+            user_weight:this.formItem.weight
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
+      }
     }
-}
+  }
+
 </script>
+<style>
+.MeForm{
+    width:400px;
+    margin: 0,auto;
+    padding:50px;
+    border: 1px solid black;
+}
+</style>
