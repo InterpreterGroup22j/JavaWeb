@@ -2,20 +2,26 @@
   <div class="list">
     <ul>
       <li v-for="gym in gymList" :key="gym.name">
-        <router-link to="/gymDetail">
+        <router-link :to="{ name: 'gymDetail', params: { 
+          gym_id: gym.id,
+          gym_name:gym.gym_name,
+          gym_intro:gym.gym_intro,
+          gym_addr:gym.gym_addr,
+          gym_tel:gym.gym_tel
+          }}">
           <Card class="gym-item-card">
             <Row>
               <i-col span="6">
-                <p>{{gym.image}}</p>
+                <p>{{gym.gym_pic }}</p>
               </i-col>
               <i-col span='18'>
-                <p>{{gym.name}}</p>
+                <p>{{gym.gym_name}}</p>
                 <p>
                   <Rate allow-half show-text disabled :value.sync="gym.score">
                     <span style="color: #f5a623">{{ gym.score }}</span>
                   </Rate>
-                </p>
-                <p>{{gym.location}}</p>
+                </p>  
+                <p>{{gym.gym_addr}}</p>
               </i-col>
             </Row>
           </Card>
@@ -31,29 +37,38 @@
     name: "gymList",
     data() {
       return {
-        gymList: [{
-            image: '图片',
-            name: '百斯特健身',
-            score: 5,
-            location: '八一路'
-          },
-          {
-            image: '图片',
-            name: '飞宇健身',
-            score: 3.4,
-            location: '珞珈山街'
-          }
+        gymList: [
+          // {
+          //   gym_id:'1',
+          //   gym_pic: '图片',
+          //   gym_name: '百斯特健身',
+          //   gym_addr: '八一路'
+          // },
+          // {
+          //   gym_id:'2',
+          //   gym_pic: '图片',
+          //   gym_name: '飞宇健身',
+          //   gym_addr: '珞珈山街'
+          // }
         ]
       }
     },
-    mounted: {
-      load(){
-        this.axios.post('', {
-            
+    methods:{
+      loadin(){
+              this.axios.post('http://n828vd.natappfree.cc/gym/gyms', {
           })
-          .then(res => console.log(res))
+          .then(
+            res => {
+              //console.log(res.data.data);
+              this.gymList = res.data.data;
+            }
+            )
           .catch(err => console.log(err));
       }
+    },
+
+    mounted(){
+      this.loadin();
     }
   }
 
