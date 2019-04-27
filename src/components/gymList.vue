@@ -1,7 +1,6 @@
 <template>
   <div class="list">
-    <ul>
-      <li v-for="gym in gymList" :key="gym.name">
+      <Card v-for="gym in gymList" :key="gym.name" class="gym-item-card">
         <router-link :to="{ name: 'gymDetail', params: { 
           gym_id: gym.id,
           gym_name:gym.gym_name,
@@ -9,30 +8,28 @@
           gym_addr:gym.gym_addr,
           gym_tel:gym.gym_tel
           }}">
-          <Card class="gym-item-card">
-            <Row>
-              <i-col span="6">
-                <p>{{gym.gym_pic }}</p>
-              </i-col>
-              <i-col span='18'>
-                <p>{{gym.gym_name}}</p>
-                <p>
-                  <Rate allow-half show-text disabled :value.sync="gym.score">
-                    <span style="color: #f5a623">{{ gym.score }}</span>
-                  </Rate>
-                </p>  
-                <p>{{gym.gym_addr}}</p>
-              </i-col>
-            </Row>
-          </Card>
+          <Row>
+            <i-col span="6">
+              <p>{{gym.gym_pic }}</p>
+            </i-col>
+            <i-col span='18'>
+              <p>{{gym.gym_name}}</p>
+              <p>
+                <Rate allow-half show-text disabled :value.sync="gym.score">
+                  <span style="color: #f5a623">{{ gym.score }}</span>
+                </Rate>
+              </p>
+              <p>{{gym.gym_addr}}</p>
+            </i-col>
+          </Row>
         </router-link>
-      </li>
-    </ul>
-  </div>
+      </Card>
+    </div>
 </template>
 
 <script>
-  import Vue from 'vue'
+  import Vue from 'vue';
+  import scrollReveal from 'scrollreveal';
   export default {
     name: "gymList",
     data() {
@@ -50,30 +47,37 @@
           //   gym_name: '飞宇健身',
           //   gym_addr: '珞珈山街'
           // }
-        ]
+        ],
+        scrollReveal: scrollReveal()
       }
     },
-    methods:{
-      loadin(){
-              this.axios.post('http://n828vd.natappfree.cc/gym/gyms', {
-          })
+    methods: {
+      loadin() {
+        this.axios.post('http://n828vd.natappfree.cc/gym/gyms', {})
           .then(
             res => {
               //console.log(res.data.data);
               this.gymList = res.data.data;
             }
-            )
+          )
           .catch(err => console.log(err));
       }
     },
-
-    mounted(){
+    mounted() {
       this.loadin();
+    },
+    updated(){
+      this.scrollReveal.reveal('.gym-item-card', {
+        delay: 200,
+        reset: true,
+        easing: 'ease',
+        scale:0.9
+      })
     }
     // mounted: {
     //   load(){
     //     this.axios.post('', {
-            
+
     //       })
     //       .then(res => console.log(res))
     //       .catch(err => console.log(err));

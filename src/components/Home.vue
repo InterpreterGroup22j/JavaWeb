@@ -87,8 +87,7 @@
         delay: 200,
         reset: true,
         distance:'10px',
-        easing:'ease',
-        interval: 50,
+        easing:'ease'
       });
     }
   }
