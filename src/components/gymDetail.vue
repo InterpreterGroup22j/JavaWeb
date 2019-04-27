@@ -33,7 +33,9 @@
       <ul>
         <li v-for="comment in comments">
           <p>
-            {{comment.user}}
+            {{comment.user_id}}
+          </p>
+          <p>
             <Rate allow-half show-text disabled v-model="comment.point">
               <span style="color: #f5a623">{{ comment.point }}</span>
             </Rate>
@@ -84,7 +86,7 @@
     methods: {
       load_comment(){
         this.axios.post('http://n828vd.natappfree.cc/gym/comments', {
-            
+            gym_id:this.gym_id
           })
           .then(
             res => {
@@ -96,14 +98,15 @@
       },
       submit() {
         if(this.$store.getters.getLogin){
-          this.$Message.info('提交评论');
           this.axios.post('http://n828vd.natappfree.cc/gym/addComments', {
             gym_id:this.gym_id,
             user_id:this.$store.getters.getId,
-            comment:this.user_comment,
+            cotent:this.user_comment,
             createtime: (new Date()).getTime()
           })
-          .then(res => console.log(res))
+          .then(res => {
+            console.log(res)
+            })
           .catch(err => console.log(err));
         }
         else{
