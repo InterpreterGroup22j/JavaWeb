@@ -33,7 +33,9 @@
       <ul>
         <li v-for="comment in comments">
           <p>
-            {{comment.user}}
+            {{comment.user_id}}
+          </p>
+          <p>
             <Rate allow-half show-text disabled v-model="comment.point">
               <span style="color: #f5a623">{{ comment.point }}</span>
             </Rate>
@@ -84,7 +86,7 @@
     methods: {
       load_comment(){
         this.axios.post('http://n828vd.natappfree.cc/gym/comments', {
-            
+            gym_id:this.gym_id
           })
           .then(
             res => {
