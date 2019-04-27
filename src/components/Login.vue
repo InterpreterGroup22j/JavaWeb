@@ -20,7 +20,7 @@
     },
     methods: {
       login() {
-        this.axios.post('http://ygnfje.natappfree.cc/user/userLogin', {
+        this.axios.post('http://n828vd.natappfree.cc/user/userLogin', {
             user_account: this.account,
             user_password: this.password
           })

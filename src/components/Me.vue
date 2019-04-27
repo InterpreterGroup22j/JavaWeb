@@ -60,23 +60,24 @@
           this.type = 'md-checkmark';
           this.btn_label = '保存';
         }
+      },
+      info() {
+        this.axios.post('http://h6be2u.natappfree.cc/user/qryUserInfo', {
+            id: this.formItem.id,
+            user_name: this.formItem.username,
+            user_account: this.formItem.account,
+            user_password: this.formItem.password,
+            user_sex: this.formItem.sex,
+            user_height: this.formItem.height,
+            user_weight: this.formItem.weight
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
       }
     },
-    // mounted:{
-    // info(){
-    //   this.axios.post('http://h6be2u.natappfree.cc/user/qryUserInfo', {
-    //         id: this.formItem.id,
-    //         user_name: this.formItem.username,
-    //         user_account: this.formItem.account,
-    //         user_password: this.formItem.password,
-    //         user_sex:this.formItem.sex,
-    //         user_height:this.formItem.height,
-    //         user_weight:this.formItem.weight
-    //       })
-    //       .then(res => console.log(res))
-    //       .catch(err => console.log(err));
-    //   }
-    // }
+    mounted() {
+      this.info();
+    }
   }
 
 </script>

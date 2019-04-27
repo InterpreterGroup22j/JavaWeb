@@ -2,7 +2,7 @@
   <div class="list">
     <ul>
       <li v-for="gym in gymList" :key="gym.name">
-        <router-link to="/gymDetail">
+        <router-link :to="'gymDetail'">
           <Card class="gym-item-card">
             <Row>
               <i-col span="6">
@@ -31,6 +31,7 @@
     name: "gymList",
     data() {
       return {
+        path:'/gymDetail',
         gymList: [{
             image: '图片',
             name: '百斯特健身',
@@ -45,16 +46,16 @@
           }
         ]
       }
-    },
-    mounted: {
-      load(){
-        this.axios.post('', {
-            
-          })
-          .then(res => console.log(res))
-          .catch(err => console.log(err));
-      }
     }
+    // mounted: {
+    //   load(){
+    //     this.axios.post('', {
+            
+    //       })
+    //       .then(res => console.log(res))
+    //       .catch(err => console.log(err));
+    //   }
+    // }
   }
 
 </script>
