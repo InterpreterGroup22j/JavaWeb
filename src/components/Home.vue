@@ -17,13 +17,13 @@
       </Carousel>
       <Row :gutter="16" id="card_container">
         <iCol span="8">
-          <Card class="card headline load-hidden">
+          <Card class="card headline">
             <p slot="title">小帖子</p>
             <div class="card_content" @click="click">Content</div>
           </Card>
         </iCol>
         <iCol span="8">
-          <Card class="card headline load-hidden">
+          <Card class="card headline">
             <p slot="title">小帖子</p>
             <div class="card_content">Content</div>
           </Card>
@@ -36,6 +36,7 @@
         </iCol>
       </Row>
     </section>
+    <Divider />
     <section class="home-section test headline">
       <div class="headline">22222222222222222222</div>
       <div class="headline">22222222222222222222222222222</div>
@@ -47,8 +48,84 @@
       <div class="headline">2222222222222222222222</div>
       <div class="headline">2222222222222222222222222222222</div>
     </section>
-    <section class="home-section headline">
-      <div style="font-size:192px;">3</div>
+    <Divider />
+    <section class="home-section">
+      <div>
+        <Row class="s3-row">
+          <i-col class="s3-col">前端技术</i-col>
+        </Row>
+        <Row :gutter="32" class="s3-row">
+          <i-col span="6" class="s3-col">
+            <Card class="card-reveal s3-card">
+              <div>
+                <img src="../../static/vue.png">
+                <p class="s3-card-title">Vue</p>
+              </div>
+            </Card>
+          </i-col>
+          <i-col span="6" class="s3-col">
+            <Card class="card-reveal s3-card">
+              <div>
+                <img src="../../static/vue.png">
+                <p class="s3-card-title">Vuex</p>
+              </div>
+            </Card>
+          </i-col>
+          <i-col span="6" class="s3-col">
+            <Card class="card-reveal s3-card">
+              <div>
+                <img src="../../static/vue.png">
+                <p class="s3-card-title">Vue Router</p>
+              </div>
+            </Card>
+          </i-col>
+          <i-col span="6" class="s3-col">
+            <Card class="card-reveal s3-card">
+              <div>
+                <img src="../../static/axios.png">
+                <p class="s3-card-title">Axios</p>
+              </div>
+            </Card>
+          </i-col>
+        </Row>
+        <Row :gutter="32" class="s3-row">
+          <i-col span="6" class="s3-col">
+            <Card class="card-reveal s3-card">
+              <div>
+                <img src="../../static/iview.png">
+                <p class="s3-card-title">iView</p>
+              </div>
+            </Card>
+          </i-col>
+          <i-col span="6" class="s3-col">
+            <Card class="card-reveal s3-card">
+              <div>
+                <img src="../../static/nodejs.png">
+                <p class="s3-card-title">Node.js</p>
+              </div>
+            </Card>
+          </i-col>
+          <i-col span="6" class="s3-col">
+            <Card class="card-reveal s3-card">
+              <div>
+                <img src="../../static/scrollreavel.png">
+                <p class="s3-card-title">ScrollReveal</p>
+              </div>
+            </Card>
+          </i-col>
+          <i-col span="6" class="s3-col">
+            <Card class="card-reveal s3-card">
+              <div>
+                <img src="../../static/webpack.png">
+                <p class="s3-card-title">webpack</p>
+              </div>
+            </Card>
+          </i-col>
+        </Row>
+        <Row class="s3-row">
+          <i-col class="s3-col">后台技术</i-col>
+        </Row>
+      </div>
     </section>
   </div>
 </template>
@@ -86,14 +163,26 @@
       this.scrollReveal.reveal('.headline', {
         delay: 200,
         reset: true,
-        distance:'10px',
-        easing:'ease'
+        distance: '10px',
+        easing: 'ease'
+      });
+      this.scrollReveal.reveal('.card-reveal', {
+        delay: 200,
+        reset: true,
+        distance: '10px',
+        easing: 'ease',
+        interval:100,
+        scale:0.9
       });
     }
   }
 
 </script>
 <style>
+  img {
+    height: 100px;
+  }
+
   .home-section {
     padding: 84px 40px 0px 40px;
     height: 100vh;
@@ -116,8 +205,15 @@
     font-size: 24px;
   }
 
-  .load-hidden {
-    visibility: hidden;
+  .s3-col {
+    text-align: center;
+    font-size: 24px;
+  }
+  .s3-card-title {
+    font-size: 20px;
   }
 
+.s3-row{
+  margin: 32px;
+}
 </style>
