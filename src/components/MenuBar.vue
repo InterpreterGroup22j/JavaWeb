@@ -18,7 +18,7 @@
           name: 'Plan'
         },
         vIsLogin: {
-          name: 'Login',
+          name: 'Me',
           title: '登录'
         },
         activeItem: 'Home'
