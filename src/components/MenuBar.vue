@@ -1,12 +1,12 @@
 <template>
   <div id="menu-container">
-    <img src="../../static/logo.png" style="height:64px;float:left;">
-        <Menu mode="horizontal" theme="light" @on-select="navTo" :active-name="activeItem">
-          <MenuItem name="Home">主页</MenuItem>
-          <MenuItem name="gymList">健身房</MenuItem>
-          <MenuItem :name="vHasPlan.name">健身计划</MenuItem>
-          <MenuItem :name="vIsLogin.name">{{vIsLogin.title}}</MenuItem>
-        </Menu>
+    <img src="../../static/logo.png" style="height:64px;float:left;margin-left:40px;">
+    <Menu mode="horizontal" theme="light" @on-select="navTo" :active-name="activeItem">
+      <MenuItem name="Home">主页</MenuItem>
+      <MenuItem name="gymList">健身房</MenuItem>
+      <MenuItem :name="vHasPlan.name">健身计划</MenuItem>
+      <MenuItem :name="vIsLogin.name">{{vIsLogin.title}}</MenuItem>
+    </Menu>
   </div>
 </template>
 <script>
@@ -71,14 +71,16 @@
   .ivu-menu-horizontal.ivu-menu-light:after {
     height: 0px;
   }
-.ivu-menu-horizontal{
-  width: 720px;
-  margin: 0 auto;
-}
+
+  .ivu-menu-horizontal {
+    width: 960px;
+    margin: 0 auto;
+  }
+
   .ivu-menu-item {
     width: 120px;
     text-align: center;
-    margin: 0 30px;
+    margin: 0 60px;
     font-size: 16px;
     background-color: rgba(0, 0, 0, 0);
   }

@@ -131,29 +131,11 @@
   export default {
     data() {
       return {
-        setting: {
-          autoplay: true,
-          loop: true
-        },
-        test: {
-          test1: 0
-        },
         scrollReveal: scrollReveal()
       }
     },
     methods: {
-      click() {
-        var logEl = document.querySelector('.card_content');
-        anime({
-          targets: this.test,
-          test1: 100,
-          round: 1,
-          easing: 'linear',
-          update: function () {
-            logEl.innerHTML = JSON.stringify(this.test);
-          }
-        });
-      }
+     
     },
     mounted() {
       this.scrollReveal.reveal('.headline', {
