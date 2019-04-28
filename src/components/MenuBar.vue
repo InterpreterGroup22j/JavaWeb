@@ -18,7 +18,7 @@
           name: 'Plan'
         },
         vIsLogin: {
-          name: 'Me',
+          name: 'Login',
           title: '登录'
         },
         activeItem: 'Home'
@@ -89,8 +89,8 @@
   .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item:hover,
   .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu-active,
   .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu:hover {
-    color: #f03;
-    border-bottom: 2px solid #f03;
+    color: #fbda41;
+    border-bottom: 2px solid #fbda41;
   }
 
   #menu-container {

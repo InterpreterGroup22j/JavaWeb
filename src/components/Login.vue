@@ -20,12 +20,12 @@
     },
     methods: {
       login() {
-        this.axios.post('http://n828vd.natappfree.cc/user/userLogin', {
+        this.axios.post('/user/userLogin', {
             user_account: this.account,
             user_password: this.password
           })
           .then(res => {
-            console.log(res.data.code);
+            console.log(res);
             if(res.data.code==200){
               this.$store.dispatch('login',this.account);
               this.$router.push('/home');

@@ -85,7 +85,7 @@
     },
     methods: {
       load_comment(){
-        this.axios.post('http://n828vd.natappfree.cc/gym/comments', {
+        this.axios.post('/gym/comments', {
             gym_id:this.gym_id
           })
           .then(
@@ -98,7 +98,7 @@
       },
       submit() {
         if(this.$store.getters.getLogin){
-          this.axios.post('http://n828vd.natappfree.cc/gym/addComments', {
+          this.axios.post('/gym/addComments', {
             gym_id:this.gym_id,
             //user_id:this.$store.getters.getId,
             content:this.user_comment,

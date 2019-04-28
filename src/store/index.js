@@ -4,7 +4,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        login: true,
+        login: false,
         plan: false,
         id:''
     },
