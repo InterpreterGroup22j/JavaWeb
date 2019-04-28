@@ -1,24 +1,31 @@
 <template>
-  <Form class="MeForm" :label-width="80">
-    <FormItem label="Username">
-      <Input v-model="formItem.username" :disabled=write placeholder="username" />
-    </FormItem>
-    <FormItem label="Account">
-      <Input v-model="formItem.account" :disabled="true" placeholder="account" />
-    </FormItem>
-    <FormItem label="Sex">
-      <Input v-model="formItem.sex" :disabled=write placeholder="sex" />
-    </FormItem>
-    <FormItem label="Height">
-      <Input v-model="formItem.height" :disabled=write placeholder="height" />
-    </FormItem>
-    <FormItem label="Weight">
-      <Input v-model="formItem.weight" :disabled=write placeholder="weight" />
-    </FormItem>
-    <FormItem>
-      <Button type="primary" :icon=type @click="fWrite()">{{btn_label}}</Button>
-    </FormItem>
-  </Form>
+  <div class="me-container">
+    <Card>
+
+      <Form class="MeForm" :label-width="80">
+        <FormItem label="Username">
+          <Input v-model="formItem.username" :disabled=write placeholder="username" />
+        </FormItem>
+        <FormItem label="Account">
+          <Input v-model="formItem.account" :disabled="true" placeholder="account" />
+        </FormItem>
+        <FormItem label="Sex">
+          <Input v-model="formItem.sex" :disabled=write placeholder="sex" />
+        </FormItem>
+        <FormItem label="Height">
+          <Input v-model="formItem.height" :disabled=write placeholder="height" />
+        </FormItem>
+        <FormItem label="Weight">
+          <Input v-model="formItem.weight" :disabled=write placeholder="weight" />
+        </FormItem>
+        <FormItem>
+          <Button type="primary" :icon=type @click="fWrite()">{{btn_label}}</Button>
+        </FormItem>
+      </Form>
+    </Card>
+  </div>
+
+
 </template>
 
 <script>
@@ -77,6 +84,10 @@
 
 </script>
 <style>
+.me-container{
+  height: 100vh;
+  width: 100vw;
+}
   .MeForm {
     width: 400px;
     margin: 84px auto 0px auto;

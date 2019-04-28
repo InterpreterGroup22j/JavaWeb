@@ -10,7 +10,7 @@ import VueAxios from 'vue-axios';
 import store from './store';
 
 
-axios.defaults.baseURL = 'http://9t661x.natappfree.cc';
+axios.defaults.baseURL = 'http://fuk8ib.natappfree.cc';
 axios.defaults.withCredentials = true;
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
