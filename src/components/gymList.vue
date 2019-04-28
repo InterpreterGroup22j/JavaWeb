@@ -10,7 +10,7 @@
           }}">
           <Row>
             <i-col span="6">
-              <p>{{gym.gym_pic }}</p>
+              <img :src="gym.gym_pic" alt="">
             </i-col>
             <i-col span='18'>
               <p>{{gym.gym_name}}</p>
