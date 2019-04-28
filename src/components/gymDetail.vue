@@ -1,6 +1,6 @@
 <template>
   <div id="gym-detail-container">
-    <div id="">
+    <div id="gym_name">
       {{gym_name}}
     </div>
     <Card class="gym-detail-card">
@@ -31,18 +31,17 @@
         </p>
       </Modal>
       <ul>
-        <li v-for="comment in comments">
+        <li v-for="comment in comments" :key="comment.id">
           <Divider/>
           <p>
             {{comment.user_id}}
           </p>
           <p>
             <Rate allow-half show-text disabled v-model="comment.point">
-              <span style="color: #f5a623">{{ comment.point }}</span>
+              <span style="color: #f5a623">{{ comment.point/comment.remark_num }}</span>
             </Rate>
           </p>
           {{comment.content}}
-          
         </li>
       </ul>
     </Card>
@@ -118,6 +117,11 @@
 </script>
 
 <style>
+  #gym_name{
+    text-align: center;
+    font-size: 300%;
+    color: #FFFF99;
+  }
   .detail_title {
     font-size: 150%;
   }
