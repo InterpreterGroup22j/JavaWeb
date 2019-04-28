@@ -1,6 +1,6 @@
 <template>
   <div id="gym-detail-container">
-    <div id="">
+    <div id="gym_name">
       {{gym_name}}
     </div>
     <Card class="gym-detail-card">
@@ -31,13 +31,14 @@
         </p>
       </Modal>
       <ul>
-        <li v-for="comment in comments">
+        <li v-for="comment in comments" :key="comment.id">
+          <Divider/>
           <p>
             {{comment.user_id}}
           </p>
           <p>
             <Rate allow-half show-text disabled v-model="comment.point">
-              <span style="color: #f5a623">{{ comment.point }}</span>
+              <span style="color: #f5a623">{{ comment.point/comment.remark_num }}</span>
             </Rate>
           </p>
           {{comment.content}}
@@ -69,18 +70,7 @@
         gym_addr:this.$route.params.gym_addr,
         gym_tel:this.$route.params.gym_tel,
 
-        comments: [
-          // {
-          //   user: '用户一',
-          //   point: 5,
-          //   content: '设施齐全'
-          // },
-          // {
-          //   user: '用户二',
-          //   point: 3,
-          //   content: '环境好'
-          // }
-        ]
+        comments: []
       }
     },
     methods: {
@@ -100,12 +90,12 @@
         if(this.$store.getters.getLogin){
           this.axios.post('/gym/addComments', {
             gym_id:this.gym_id,
-            user_id:this.$store.getters.getId,
-            cotent:this.user_comment,
-            createtime: (new Date()).getTime()
+            point:this.user_rate,
+            content:this.user_comment,
           })
           .then(res => {
-            console.log(res)
+            this.load_comment();
+            console.log(res);
             })
           .catch(err => console.log(err));
         }
@@ -127,6 +117,11 @@
 </script>
 
 <style>
+  #gym_name{
+    text-align: center;
+    font-size: 300%;
+    color: #FFFF99;
+  }
   .detail_title {
     font-size: 150%;
   }

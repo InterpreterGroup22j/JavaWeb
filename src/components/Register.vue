@@ -1,5 +1,13 @@
 <template>
-  <Form class="registerForm" :label-width="80">
+  <Card style="width: 800px;margin:0 auto">
+    <Row>
+      <Col span="9">
+        <div id="picture">
+          picture
+        </div>
+      </Col>
+    <Col span="15">
+<Form class="registerForm" :label-width="80">
     <FormItem label="Username">
       <Input v-model="formItem.username" placeholder="username" />
     </FormItem>
@@ -22,6 +30,9 @@
       <Button type="primary" @click="register()">注册</Button>
     </FormItem>
   </Form>
+    </Col>
+    </Row>
+  </Card>
 </template>
 <script>
   export default {
