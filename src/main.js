@@ -8,9 +8,10 @@ import 'iview/dist/styles/iview.css';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import store from './store';
-import Vuebar from 'vuebar';
 
-Vue.use(Vuebar);
+
+axios.defaults.baseURL = 'http://9t661x.natappfree.cc';
+axios.defaults.withCredentials = true;
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 Vue.use(iView);

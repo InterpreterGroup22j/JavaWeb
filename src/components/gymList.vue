@@ -53,7 +53,7 @@
     },
     methods: {
       loadin() {
-        this.axios.post('http://n828vd.natappfree.cc/gym/gyms', {})
+        this.axios.post('/gym/gyms', {})
           .then(
             res => {
               //console.log(res.data.data);

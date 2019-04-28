@@ -1,6 +1,6 @@
 <template>
   <div id="home-container">
-    <section class="home-section">
+    <section class="home-section s0">
       <Carousel :autoplay="setting.autoplay" :loop="setting.loop">
         <CarouselItem>
           <div class="carouselItem">1</div>
@@ -36,8 +36,12 @@
         </iCol>
       </Row>
     </section>
-    <Divider />
-    <section class="home-section test headline">
+    <section class="home-section test card-reveal s1">
+      <div style="height:100%;width:100px;background:#fbda41;filter:opacity(70%);">
+        <div class="headline">2222222222222222222222222222222</div>
+      </div>
+    </section>
+    <section class="home-section test card-reveal s2">
       <div class="headline">22222222222222222222</div>
       <div class="headline">22222222222222222222222222222</div>
       <div class="headline">222222222222222222</div>
@@ -48,8 +52,7 @@
       <div class="headline">2222222222222222222222</div>
       <div class="headline">2222222222222222222222222222222</div>
     </section>
-    <Divider />
-    <section class="home-section">
+    <section class="home-section s3">
       <div>
         <Row class="s3-row">
           <i-col class="s3-col">前端技术</i-col>
@@ -171,8 +174,9 @@
         reset: true,
         distance: '10px',
         easing: 'ease',
-        interval:100,
-        scale:0.9
+        interval: 100,
+        scale: 0.9,
+        viewFactor: 0.25
       });
     }
   }
@@ -205,15 +209,36 @@
     font-size: 24px;
   }
 
+  .s1 {
+    background-image: url('../../static/home/food.jpg');
+    filter: grayscale(0.8);
+    transition: filter 1s;
+  }
+
+  .s1:hover {
+    filter: grayscale(0);
+  }
+
+  .s2 {
+    background-image: url('../../static/home/gym.jpg');
+    filter: grayscale(0.8);
+    transition: filter 1s;
+  }
+  .s2:hover {
+    filter: grayscale(0);
+  }
+
   .s3-col {
     text-align: center;
     font-size: 24px;
   }
+
   .s3-card-title {
     font-size: 20px;
   }
 
-.s3-row{
-  margin: 32px;
-}
+  .s3-row {
+    margin: 32px;
+  }
+
 </style>

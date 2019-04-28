@@ -39,7 +39,7 @@
     },
     methods: {
       register() {
-        this.axios.post('http://n828vd.natappfree.cc/user/insertUser', {
+        this.axios.post('/user/insertUser', {
             user_name: this.formItem.username,
             user_account: this.formItem.account,
             user_password: this.formItem.password,
