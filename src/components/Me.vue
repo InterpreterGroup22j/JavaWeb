@@ -1,8 +1,5 @@
 <template>
   <Form class="MeForm" :label-width="80">
-    <FormItem label="Id">
-      <Input v-model="formItem.id" :disabled="true" placeholder="id" />
-    </FormItem>
     <FormItem label="Username">
       <Input v-model="formItem.username" :disabled=write placeholder="username" />
     </FormItem>
@@ -29,7 +26,6 @@
     data() {
       return {
         formItem: {
-          id: '',
           username: '',
           account: '',
           sex: '',
@@ -47,7 +43,7 @@
         if (this.write) {
           this.type = 'md-create';
           this.btn_label = '编辑';
-          this.axios.post('http://h6be2u.natappfree.cc/user/UpdateUserInfo', {
+          this.axios.post('/user/UpdateUserInfo', {
               user_name: this.formItem.username,
               user_account: this.formItem.account,
               user_sex: this.formItem.sex,
@@ -61,21 +57,20 @@
           this.btn_label = '保存';
         }
       },
-      info(){
-      this.axios.post('http://h6be2u.natappfree.cc/user/qryUserInfo', {
-            id: this.formItem.id,
-            user_name: this.formItem.username,
-            user_account: this.formItem.account,
-            user_password: this.formItem.password,
-            user_sex:this.formItem.sex,
-            user_height:this.formItem.height,
-            user_weight:this.formItem.weight
+      info() {
+        this.axios.get('/user/qryUserInfo')
+          .then(res => {
+            console.log(res);
+            this.formItem.username = res.data.data.user_name;
+            this.formItem.account = res.data.data.user_account;
+            this.formItem.sex = res.data.data.user_sex;
+            this.formItem.height = res.data.data.user_height;
+            this.formItem.weight = res.data.data.user_weight;
           })
-          .then(res => console.log(res))
           .catch(err => console.log(err));
       }
     },
-    mounted(){
+    mounted() {
       this.info();
     }
   }

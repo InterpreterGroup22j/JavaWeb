@@ -1,60 +1,88 @@
 <template>
   <div class="list">
-    <ul>
-      <li v-for="gym in gymList" :key="gym.name">
-        <router-link to="/gymDetail">
-          <Card class="gym-item-card">
-            <Row>
-              <i-col span="6">
-                <p>{{gym.image}}</p>
-              </i-col>
-              <i-col span='18'>
-                <p>{{gym.name}}</p>
-                <p>
-                  <Rate allow-half show-text disabled :value.sync="gym.score">
-                    <span style="color: #f5a623">{{ gym.score }}</span>
-                  </Rate>
-                </p>
-                <p>{{gym.location}}</p>
-              </i-col>
-            </Row>
-          </Card>
+      <Card v-for="gym in gymList" :key="gym.name" class="gym-item-card">
+        <router-link :to="{ name: 'gymDetail', params: { 
+          gym_id: gym.id,
+          gym_name:gym.gym_name,
+          gym_intro:gym.gym_intro,
+          gym_addr:gym.gym_addr,
+          gym_tel:gym.gym_tel
+          }}">
+          <Row>
+            <i-col span="6">
+              <p>{{gym.gym_pic }}</p>
+            </i-col>
+            <i-col span='18'>
+              <p>{{gym.gym_name}}</p>
+              <p>
+                <Rate allow-half show-text disabled :value.sync="gym.score">
+                  <span style="color: #f5a623">{{ gym.score }}</span>
+                </Rate>
+              </p>
+              <p>{{gym.gym_addr}}</p>
+            </i-col>
+          </Row>
         </router-link>
-      </li>
-    </ul>
-  </div>
+      </Card>
+    </div>
 </template>
 
 <script>
-  import Vue from 'vue'
+  import Vue from 'vue';
+  import scrollReveal from 'scrollreveal';
   export default {
     name: "gymList",
     data() {
       return {
-        gymList: [{
-            image: '图片',
-            name: '百斯特健身',
-            score: 5,
-            location: '八一路'
-          },
-          {
-            image: '图片',
-            name: '飞宇健身',
-            score: 3.4,
-            location: '珞珈山街'
-          }
-        ]
+        gymList: [
+          // {
+          //   gym_id:'1',
+          //   gym_pic: '图片',
+          //   gym_name: '百斯特健身',
+          //   gym_addr: '八一路'
+          // },
+          // {
+          //   gym_id:'2',
+          //   gym_pic: '图片',
+          //   gym_name: '飞宇健身',
+          //   gym_addr: '珞珈山街'
+          // }
+        ],
+        scrollReveal: scrollReveal()
       }
     },
-    mounted: {
-      load(){
-        this.axios.post('', {
-            
-          })
-          .then(res => console.log(res))
+    methods: {
+      loadin() {
+        this.axios.post('/gym/gyms', {})
+          .then(
+            res => {
+              //console.log(res.data.data);
+              this.gymList = res.data.data;
+            }
+          )
           .catch(err => console.log(err));
       }
+    },
+    mounted() {
+      this.loadin();
+    },
+    updated(){
+      this.scrollReveal.reveal('.gym-item-card', {
+        delay: 200,
+        reset: true,
+        easing: 'ease',
+        scale:0.9
+      })
     }
+    // mounted: {
+    //   load(){
+    //     this.axios.post('', {
+
+    //       })
+    //       .then(res => console.log(res))
+    //       .catch(err => console.log(err));
+    //   }
+    // }
   }
 
 </script>
