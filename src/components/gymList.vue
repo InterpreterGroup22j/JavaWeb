@@ -59,7 +59,7 @@
         this.axios.post('/gym/gyms', {})
           .then(
             res => {
-              //console.log(res.data.data);
+              console.log(res.data.data);
               this.gymList = res.data.data;
             }
           )
