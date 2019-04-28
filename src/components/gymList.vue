@@ -10,16 +10,19 @@
           }}">
           <Row>
             <i-col span="6">
-              <p>{{gym.gym_pic }}</p>
+              <img :src="gym.gym_pic" alt="" class="gym_img">
             </i-col>
             <i-col span='18'>
-              <p>{{gym.gym_name}}</p>
+              <div style="margin:0 auto">
+              <p class="gym_name">{{gym.gym_name}}</p>
               <p>
                 <Rate allow-half show-text disabled :value.sync="gym.score">
                   <span style="color: #f5a623">{{ gym.score }}</span>
                 </Rate>
               </p>
               <p>{{gym.gym_addr}}</p>
+              </div>
+              
             </i-col>
           </Row>
         </router-link>
@@ -87,6 +90,17 @@
 
 </script>
 <style>
+
+  .gym_name{
+    font-size: 150%;
+    margin-bottom: 17px;
+  }
+  .gym_img {
+    /* width: 320px; */
+    width: 80%;
+    /* height: 100%; */
+    height: 150px;
+  }
   li {
     list-style: none;
   }
@@ -96,6 +110,7 @@
   }
 
   .gym-item-card {
+    
     padding: 0px 20px;
     margin: 10px 0px;
   }
