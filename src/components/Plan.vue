@@ -76,6 +76,7 @@
       }
     }
   }
+  </script>
   <style>
 #plan{
   padding: 84px 40px 0px 40px;
